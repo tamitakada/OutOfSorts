@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class Tests {
   public static void main(String[] args) {
     testSort();
+    testSortRandomized();
   }
 
   public static void testSort() {
@@ -31,6 +32,39 @@ public class Tests {
     results.add(Arrays.toString(five).equals("[-5, 1, 5, 12, 16]"));
 
     showResults(results, "Test Bubble Sort");
+  }
+
+  public static void testSortRandomized() {
+    ArrayList<String> failInfo = new ArrayList<String>();
+
+    for (int i = 0; i < 50; i++) {
+      int[] test = createRandomIntArr();
+      Sorts.bubbleSort(test);
+      String mySort = Arrays.toString(test);
+      Arrays.sort(test);
+      if (!mySort.equals(Arrays.toString(test))) {
+        failInfo.add(mySort);
+      }
+    }
+
+    showRandomResults(failInfo);
+  }
+
+  private static int[] createRandomIntArr() {
+    Random rng = new Random();
+    int len = rng.nextInt(10000);
+    int[] arr = new int[len];
+    for (int i = 0; i < len; i++) {
+      arr[i] = rng.nextInt();
+    }
+    return arr;
+  }
+
+  private static void showRandomResults(ArrayList<String> info) {
+    for (int i = 0; i < info.size(); i++) {
+      System.out.println("Randomized tests #" + (i + 1) + ": FAIL: Array-" + info.get(i));
+    }
+    if (info.size() == 0) System.out.println("Randomized tests: PASS");
   }
 
   private static void showResults(ArrayList<Boolean> results, String testName) {
