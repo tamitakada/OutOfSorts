@@ -23,20 +23,20 @@ public class Tests {
     results.add(Arrays.toString(three).equals("[1, 2, 3, 4, 5, 6]"));
 
     int[] four = {-2, -4, -4, -4, -2323, -77676, -999999};
-    Sorts.bubbleSort(three);
-    results.add(Arrays.toString(three).equals("[-999999, -77676, -2323, -4, -4, -4, -2]"));
+    Sorts.bubbleSort(four);
+    results.add(Arrays.toString(four).equals("[-999999, -77676, -2323, -4, -4, -4, -2]"));
 
-    int[] five = {6, 1, 3, 2, 4, 5};
-    Sorts.bubbleSort(three);
-    results.add(Arrays.toString(three).equals("[1, 2, 3, 4, 5, 6]"));
+    int[] five = {5, 1, 12, -5, 16};
+    Sorts.bubbleSort(five);
+    results.add(Arrays.toString(five).equals("[-5, 1, 5, 12, 16]"));
 
     showResults(results, "Test Bubble Sort");
   }
 
   private static void showResults(ArrayList<Boolean> results, String testName) {
     for (int i = 0; i < results.size(); i++) {
-      if (results.get(i)) System.out.println(testName + " #" + i + ": PASS");
-      else System.out.println(testName + " #" + i + ": FAIL");
+      if (results.get(i)) System.out.println(testName + " #" + (i + 1) + ": PASS");
+      else System.out.println(testName + " #" + (i + 1) + ": FAIL");
     }
   }
 }
