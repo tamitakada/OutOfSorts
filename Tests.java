@@ -6,6 +6,7 @@ public class Tests {
   public static void main(String[] args) {
     testSort();
     testSortRandomized();
+    testSelectSort();
   }
 
   public static void testSort() {
@@ -40,6 +41,49 @@ public class Tests {
     for (int i = 0; i < 50; i++) {
       int[] test = createRandomIntArr();
       Sorts.bubbleSort(test);
+      String mySort = Arrays.toString(test);
+      Arrays.sort(test);
+      if (!mySort.equals(Arrays.toString(test))) {
+        failInfo.add(mySort);
+      }
+    }
+
+    showRandomResults(failInfo);
+  }
+
+  public static void testSelectSort() {
+    ArrayList<Boolean> results = new ArrayList<Boolean>();
+
+    int[] one = {0, 1, 2, 3, 6, 1000, 93801823};
+    Sorts.selectionSort(one);
+    System.out.println(Arrays.toString(one));
+    results.add(Arrays.toString(one).equals("[0, 1, 2, 3, 6, 1000, 93801823]"));
+
+    int[] two = {12, -444, 12938, 10, 3, -22, -3, 99, 99, 0};
+    Sorts.selectionSort(two);
+    results.add(Arrays.toString(two).equals("[-444, -22, -3, 0, 3, 10, 12, 99, 99, 12938]"));
+
+    int[] three = {6, 1, 3, 2, 4, 5};
+    Sorts.selectionSort(three);
+    results.add(Arrays.toString(three).equals("[1, 2, 3, 4, 5, 6]"));
+
+    int[] four = {-2, -4, -4, -4, -2323, -77676, -999999};
+    Sorts.selectionSort(four);
+    results.add(Arrays.toString(four).equals("[-999999, -77676, -2323, -4, -4, -4, -2]"));
+
+    int[] five = {5, 1, 12, -5, 16};
+    Sorts.selectionSort(five);
+    results.add(Arrays.toString(five).equals("[-5, 1, 5, 12, 16]"));
+
+    showResults(results, "Test Selection Sort");
+  }
+
+  public static void testSelectRandomized() {
+    ArrayList<String> failInfo = new ArrayList<String>();
+
+    for (int i = 0; i < 50; i++) {
+      int[] test = createRandomIntArr();
+      Sorts.selectionSort(test);
       String mySort = Arrays.toString(test);
       Arrays.sort(test);
       if (!mySort.equals(Arrays.toString(test))) {

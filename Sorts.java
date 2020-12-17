@@ -20,4 +20,24 @@ public class Sorts{
     }
   }
 
+  public static void selectionSort(int[] data){
+    int newSpot = 0;
+    int previous = 0;
+    int min = 0;
+    for (int i = 0; i < data.length; i++) {
+      min = data[i];
+      previous = data[i];
+      for (int j = i + 1; j < data.length; j++) {
+        if (data[j] < min) {
+          min = data[j];
+          newSpot = j;
+        }
+      }
+      data[i] = min;
+      data[newSpot] = previous;
+    }
+  }
+
+
+
 }
