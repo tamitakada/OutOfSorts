@@ -7,6 +7,7 @@ public class Tests {
     testSort();
     testSortRandomized();
     testSelectSort();
+    testSelectRandomized();
   }
 
   public static void testSort() {
@@ -56,7 +57,6 @@ public class Tests {
 
     int[] one = {0, 1, 2, 3, 6, 1000, 93801823};
     Sorts.selectionSort(one);
-    System.out.println(Arrays.toString(one));
     results.add(Arrays.toString(one).equals("[0, 1, 2, 3, 6, 1000, 93801823]"));
 
     int[] two = {12, -444, 12938, 10, 3, -22, -3, 99, 99, 0};
