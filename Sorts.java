@@ -27,6 +27,7 @@ public class Sorts{
     for (int i = 0; i < data.length; i++) {
       min = data[i];
       previous = data[i];
+      newSpot = i;
       for (int j = i + 1; j < data.length; j++) {
         if (data[j] < min) {
           min = data[j];
