@@ -41,16 +41,18 @@ public class Sorts{
 
   public static void insertionSort(int[] data){
     for (int i = 1; i < data.length; i++) {
-      int index = i;
-      for (int j = 0; j < i; j++) {
-        if (data[j] > data[i]) {
-          index = j;
+      boolean placed = false;
+      int current = data[i];
+      for (int j = i - 1; j >= 0; j--) {
+        if (data[j] > current) {
+          data[j + 1] = data[j];
+        } else {
+          data[j + 1] = current;
+          placed = true;
           break;
         }
       }
-      int old = data[index];
-      data[index] = data[i];
-      data[i] = old;
+      if (!placed) data[0] = current;
     }
   }
 }
