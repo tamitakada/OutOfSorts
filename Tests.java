@@ -8,6 +8,7 @@ public class Tests {
     testSortRandomized();
     testSelectSort();
     testSelectRandomized();
+    testInsertSort();
   }
 
   public static void testSort() {
@@ -92,6 +93,32 @@ public class Tests {
     }
 
     showRandomResults(failInfo);
+  }
+
+  public static void testInsertSort() {
+    ArrayList<Boolean> results = new ArrayList<Boolean>();
+
+    int[] one = {0, 1, 2, 3, 6, 1000, 93801823};
+    Sorts.insertionSort(one);
+    results.add(Arrays.toString(one).equals("[0, 1, 2, 3, 6, 1000, 93801823]"));
+
+    int[] two = {12, -444, 12938, 10, 3, -22, -3, 99, 99, 0};
+    Sorts.insertionSort(two);
+    results.add(Arrays.toString(two).equals("[-444, -22, -3, 0, 3, 10, 12, 99, 99, 12938]"));
+
+    int[] three = {6, 1, 3, 2, 4, 5};
+    Sorts.insertionSort(three);
+    results.add(Arrays.toString(three).equals("[1, 2, 3, 4, 5, 6]"));
+
+    int[] four = {-2, -4, -4, -4, -2323, -77676, -999999};
+    Sorts.insertionSort(four);
+    results.add(Arrays.toString(four).equals("[-999999, -77676, -2323, -4, -4, -4, -2]"));
+
+    int[] five = {5, 1, 12, -5, 16};
+    Sorts.insertionSort(five);
+    results.add(Arrays.toString(five).equals("[-5, 1, 5, 12, 16]"));
+
+    showResults(results, "Test Insertion Sort");
   }
 
   private static int[] createRandomIntArr() {
