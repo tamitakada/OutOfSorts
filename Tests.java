@@ -127,7 +127,7 @@ public class Tests {
 
     for (int i = 0; i < 50; i++) {
       int[] test = createRandomIntArr();
-      Sorts.selectionSort(test);
+      Sorts.insertionSort(test);
       String mySort = Arrays.toString(test);
       Arrays.sort(test);
       if (!mySort.equals(Arrays.toString(test))) {
