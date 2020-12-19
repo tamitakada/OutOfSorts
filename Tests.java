@@ -9,6 +9,7 @@ public class Tests {
     testSelectSort();
     testSelectRandomized();
     testInsertSort();
+    testInsertRandomized();
   }
 
   public static void testSort() {
@@ -119,6 +120,22 @@ public class Tests {
     results.add(Arrays.toString(five).equals("[-5, 1, 5, 12, 16]"));
 
     showResults(results, "Test Insertion Sort");
+  }
+
+  public static void testInsertRandomized() {
+    ArrayList<String> failInfo = new ArrayList<String>();
+
+    for (int i = 0; i < 50; i++) {
+      int[] test = createRandomIntArr();
+      Sorts.selectionSort(test);
+      String mySort = Arrays.toString(test);
+      Arrays.sort(test);
+      if (!mySort.equals(Arrays.toString(test))) {
+        failInfo.add(mySort);
+      }
+    }
+
+    showRandomResults(failInfo);
   }
 
   private static int[] createRandomIntArr() {
